@@ -7,6 +7,6 @@ const router = Router();
 
 router.use("/user", usersRoutes);
 router.use("/authenticate", authenticateRoutes);
-router.use("/question", questionRoutes);
+router.use("/questions", questionRoutes);
 
 export { router };

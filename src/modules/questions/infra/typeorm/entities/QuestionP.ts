@@ -7,10 +7,10 @@ class QuestionP {
   id?: string;
 
   @Column()
-  enunciado: string;
+  titulo: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column()
+  enunciado: string;
 
   constructor() {
     if (!this.id) {
