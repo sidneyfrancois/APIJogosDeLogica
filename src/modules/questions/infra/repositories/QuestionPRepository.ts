@@ -20,6 +20,11 @@ class QuestionPRepository implements IQuestionPRepository {
 
     return questionP;
   }
+
+  async list(): Promise<QuestionP[]> {
+    const questionsP = await this.repository.find();
+    return questionsP;
+  }
 }
 
 export { QuestionPRepository };
