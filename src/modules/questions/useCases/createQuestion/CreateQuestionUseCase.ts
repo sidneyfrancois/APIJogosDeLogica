@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../shared/errors/AppError";
-import { Question } from "../infra/typeorm/entities/Question";
-import { IQuestionRepository } from "../repositories/IQuestionsRepository";
+import { AppError } from "../../../../shared/errors/AppError";
+import { Question } from "../../infra/typeorm/entities/Question";
+import { IQuestionRepository } from "../../repositories/IQuestionsRepository";
 
 interface IRequest {
   enunciado: string;
