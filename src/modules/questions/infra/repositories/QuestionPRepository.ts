@@ -1,13 +1,16 @@
 import { getRepository, Repository } from "typeorm";
 import { ICreateQuestionPDTO } from "../../dtos/ICreateQuestionPDTO";
 import { IQuestionPRepository } from "../../repositories/IQuestionPRepository";
+import { Question } from "../typeorm/entities/Question";
 import { QuestionP } from "../typeorm/entities/QuestionP";
 
 class QuestionPRepository implements IQuestionPRepository {
   private repository: Repository<QuestionP>;
+  private repositoryQuestion: Repository<Question>;
 
   constructor() {
     this.repository = getRepository(QuestionP);
+    this.repositoryQuestion = getRepository(Question);
   }
 
   async create({ titulo, enunciado }): Promise<QuestionP> {
@@ -21,9 +24,14 @@ class QuestionPRepository implements IQuestionPRepository {
     return questionP;
   }
 
-  async list(): Promise<QuestionP[]> {
-    const questionsP = await this.repository.find();
-    return questionsP;
+  async list(id: string): Promise<QuestionP> {
+    const questionP = await this.repository.findOne({ id });
+
+    /* const questionsRelated = await this.repositoryQuestion
+      .createQueryBuilder("q")
+      .where(""); */
+
+    return questionP;
   }
 }
 

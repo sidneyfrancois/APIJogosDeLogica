@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from "uuid";
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Question } from "./Question";
 
 @Entity("questionP")
 class QuestionP {
@@ -11,6 +12,8 @@ class QuestionP {
 
   @Column()
   enunciado: string;
+
+  questoes: Question[];
 
   constructor() {
     if (!this.id) {
