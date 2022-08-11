@@ -16,6 +16,7 @@ class CreateUserUseCase {
     email,
     password,
     escola,
+    isInstructor,
   }: ICreateUserDTO): Promise<void> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
@@ -30,6 +31,7 @@ class CreateUserUseCase {
       email,
       password: passwordHash,
       escola,
+      isInstructor,
     });
   }
 }
