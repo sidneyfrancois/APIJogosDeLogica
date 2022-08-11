@@ -8,6 +8,7 @@ import {
   PrimaryColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { QuestionP } from "./QuestionP";
 
 @Entity("questions")
 class Question {
@@ -22,6 +23,10 @@ class Question {
 
   @Column()
   resposta: string;
+
+  @ManyToOne(() => QuestionP)
+  @JoinColumn({ name: "questionP_id" })
+  questionP: QuestionP;
 
   @CreateDateColumn()
   created_at: Date;

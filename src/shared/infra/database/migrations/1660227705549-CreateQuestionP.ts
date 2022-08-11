@@ -30,6 +30,6 @@ export class CreateQuestionP1660227705549 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("questionsP");
+    await queryRunner.dropTable("questionP");
   }
 }
