@@ -26,7 +26,7 @@ class Question {
 
   @ManyToOne(() => QuestionP)
   @JoinColumn({ name: "questionP_id" })
-  questionP: QuestionP;
+  questionP_id: QuestionP;
 
   @CreateDateColumn()
   created_at: Date;

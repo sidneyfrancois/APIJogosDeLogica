@@ -4,7 +4,7 @@ import { CreateQuestionUseCase } from "./CreateQuestionUseCase";
 
 class CreateQuestionController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { enunciado, alternativas, resposta } = request.body;
+    const { enunciado, alternativas, resposta, questionP_id } = request.body;
 
     const createQuestionUseCase = container.resolve(CreateQuestionUseCase);
 
@@ -12,6 +12,7 @@ class CreateQuestionController {
       enunciado,
       alternativas,
       resposta,
+      questionP_id,
     });
 
     return response.status(201).json(question);

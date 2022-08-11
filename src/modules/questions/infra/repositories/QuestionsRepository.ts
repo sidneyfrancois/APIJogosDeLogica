@@ -10,11 +10,17 @@ class QuestionRepository implements IQuestionRepository {
     this.repository = getRepository(Question);
   }
 
-  async create({ enunciado, alternativas, resposta }): Promise<Question> {
+  async create({
+    enunciado,
+    alternativas,
+    resposta,
+    questionP_id,
+  }): Promise<Question> {
     const question = this.repository.create({
       enunciado,
       alternativas,
       resposta,
+      questionP_id,
     });
 
     await this.repository.save(question);

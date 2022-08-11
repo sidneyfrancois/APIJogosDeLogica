@@ -7,6 +7,7 @@ interface IRequest {
   enunciado: string;
   alternativas: string[];
   resposta: string;
+  questionP_id: string;
 }
 
 @injectable()
@@ -20,11 +21,13 @@ class CreateQuestionUseCase {
     enunciado,
     alternativas,
     resposta,
+    questionP_id,
   }: IRequest): Promise<Question> {
     const question = await this.questionRepository.create({
       enunciado,
       alternativas,
       resposta,
+      questionP_id,
     });
 
     return question;
