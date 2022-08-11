@@ -22,3 +22,5 @@ class QuestionRepository implements IQuestionRepository {
     return question;
   }
 }
+
+export { QuestionRepository };
