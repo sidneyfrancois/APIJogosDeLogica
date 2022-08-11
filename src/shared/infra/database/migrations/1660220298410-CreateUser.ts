@@ -27,7 +27,7 @@ export class CreateUser1660220298410 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "isInscrutor",
+            name: "isInstructor",
             type: "boolean",
             default: false,
           },
