@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "port": 5532,
+  "host": "localhost",
+  "username": "postgres",
+  "password": "@overpower",
+  "database": "jogosdelogica",
+  "migrations": ["./src/shared/infra/database/migrations/*.ts"],
+  "entities": ["./src/modules/**/entities/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/database/migrations"
+  }
+}
