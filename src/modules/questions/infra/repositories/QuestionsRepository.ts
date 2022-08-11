@@ -27,6 +27,11 @@ class QuestionRepository implements IQuestionRepository {
 
     return question;
   }
+
+  async list(id: string): Promise<Question> {
+    const question = await this.repository.findOne({ id });
+    return question;
+  }
 }
 
 export { QuestionRepository };
