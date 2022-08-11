@@ -37,6 +37,22 @@ class QuestionPRepository implements IQuestionPRepository {
 
     return questionP;
   }
+
+  async listAll(): Promise<QuestionP[]> {
+    const questionsP = await this.repository.find();
+
+    for (let questionP of questionsP) {
+      let questionsQuery = await this.repositoryQuestion
+        .createQueryBuilder("c")
+        .where("c.questionP_id = :questionP_id", {
+          questionP_id: questionP.id,
+        });
+      let questionsRelated = await questionsQuery.getMany();
+      questionP.questoes = questionsRelated;
+    }
+
+    return questionsP;
+  }
 }
 
 export { QuestionPRepository };
