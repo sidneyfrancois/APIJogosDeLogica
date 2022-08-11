@@ -4,8 +4,21 @@ import { IQuestionPRepository } from "../../repositories/IQuestionPRepository";
 import { QuestionP } from "../typeorm/entities/QuestionP";
 
 class QuestionPRepository implements IQuestionPRepository {
-  create(data: ICreateQuestionPDTO): Promise<QuestionP> {
-    throw new Error("Method not implemented.");
+  private repository: Repository<QuestionP>;
+
+  constructor() {
+    this.repository = getRepository(QuestionP);
+  }
+
+  async create({ titulo, enunciado }): Promise<QuestionP> {
+    const questionP = this.repository.create({
+      titulo,
+      enunciado,
+    });
+
+    await this.repository.save(questionP);
+
+    return questionP;
   }
 }
 
