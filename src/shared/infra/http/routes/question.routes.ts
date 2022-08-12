@@ -5,6 +5,8 @@ import { ListAllQuestionsController } from "../../../../modules/questions/useCas
 import { ListAllQuestionPController } from "../../../../modules/questions/useCases/listAllQuestionsP/ListAllQuestionPController";
 import { ListQuestionPController } from "../../../../modules/questions/useCases/listQuestionP/ListQuestionPController";
 import { ListQuestionsController } from "../../../../modules/questions/useCases/listQuestions/ListQuestionsController";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { ensureInstructor } from "../middlewares/ensureInstructor";
 
 const questionRoutes = Router();
 
@@ -15,8 +17,8 @@ const listQuestionsController = new ListQuestionsController();
 const listAllQuestionsController = new ListAllQuestionsController();
 const listAllQuestionsPController = new ListAllQuestionPController();
 
-questionRoutes.post("/question", createQuestionController.handle);
-questionRoutes.post("/questionP", createQuestionPController.handle);
+questionRoutes.post("/question", ensureAuthenticated, ensureInstructor, createQuestionController.handle);
+questionRoutes.post("/questionP", ensureAuthenticated, ensureInstructor, createQuestionPController.handle);
 questionRoutes.get("/questionP", listQuestionPController.handle);
 questionRoutes.get("/question", listQuestionsController.handle);
 questionRoutes.get("/questionall", listAllQuestionsController.handle);
