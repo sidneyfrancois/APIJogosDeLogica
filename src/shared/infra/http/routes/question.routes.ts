@@ -19,9 +19,9 @@ const listAllQuestionsPController = new ListAllQuestionPController();
 
 questionRoutes.post("/question", ensureAuthenticated, ensureInstructor, createQuestionController.handle);
 questionRoutes.post("/questionP", ensureAuthenticated, ensureInstructor, createQuestionPController.handle);
-questionRoutes.get("/questionP", listQuestionPController.handle);
-questionRoutes.get("/question", listQuestionsController.handle);
-questionRoutes.get("/questionall", listAllQuestionsController.handle);
-questionRoutes.get("/questionpall", listAllQuestionsPController.handle);
+questionRoutes.get("/questionP", ensureAuthenticated, listQuestionPController.handle);
+questionRoutes.get("/question", ensureAuthenticated, listQuestionsController.handle);
+questionRoutes.get("/questionall", ensureAuthenticated, listAllQuestionsController.handle);
+questionRoutes.get("/questionpall", ensureAuthenticated, listAllQuestionsPController.handle);
 
 export { questionRoutes };
